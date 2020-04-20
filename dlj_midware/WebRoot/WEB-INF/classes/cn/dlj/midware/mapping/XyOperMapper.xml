@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.dlj.midware.mapper.XyOperMapper">
+	<resultMap id="BaseResultMap"
+		type="cn.dlj.midware.domain.XyOper">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="AccountNo" property="accountno"
+			jdbcType="INTEGER" />
+		<result column="CustomerNo" property="customerno"
+			jdbcType="VARCHAR" />
+		<result column="CustomerName" property="customername"
+			jdbcType="VARCHAR" />
+		<result column="CardID" property="cardid" jdbcType="VARCHAR" />
+		<result column="JE" property="je" jdbcType="INTEGER" />
+		<result column="LeftJE" property="leftje" jdbcType="INTEGER" />
+		<result column="LSH" property="lsh" jdbcType="INTEGER" />
+		<result column="DevNo" property="devno" jdbcType="SMALLINT" />
+		<result column="ItemNo" property="itemno" jdbcType="TINYINT" />
+		<result column="PayTime" property="paytime"
+			jdbcType="TIMESTAMP" />
+		<result column="CreateTime" property="createtime"
+			jdbcType="TIMESTAMP" />
+		<result column="Flag" property="flag" jdbcType="TINYINT" />
+		<result column="syn" property="syn" jdbcType="INTEGER" />
+		<result column="syn_time" property="synTime" jdbcType="INTEGER" />
+		<result column="latest_syn_dt" property="latestSynDt"
+			jdbcType="TIMESTAMP" />
+		<result column="operator_name" property="operatorName"
+			jdbcType="VARCHAR" />
+		<result column="operator_account" property="operatorAccount"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, AccountNo, CustomerNo, CustomerName, CardID, JE,
+		LeftJE, LSH, DevNo,
+		ItemNo,
+		PayTime, CreateTime, Flag, syn, syn_time,
+		latest_syn_dt, operator_name,
+		operator_account
+	</sql>
+	<!-- 降序全查询xyoper表前3条数据 -->
+	<select id="queryAllByOper" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from xyoper order by syn_time desc limit 3
+	</select>
+</mapper>
